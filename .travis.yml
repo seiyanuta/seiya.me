@@ -1,0 +1,28 @@
+sudo: false
+os: osx
+osx_image: xcode11.2
+
+language: rust
+rust: nightly
+cache: cargo
+
+notifications:
+  email: false
+
+addons:
+  homebrew:
+    update: true
+    packages:
+      - doxygen
+      - graphviz
+
+script:
+  - ./build.sh
+
+deploy:
+  provider: netlify
+  edge: true
+  prod: true
+  site: "$NETLIFY_SITE_ID"
+  auth: "$NETLIFY_AUTH_TOKEN"
+  dir: public

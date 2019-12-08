@@ -1,0 +1,56 @@
+body {
+    font-size: 16px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+    line-height: 1.3em;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+header h1 {
+    font-size: 40px;
+}
+
+nav {
+    margin-top: 30px;
+}
+
+    nav > a {
+    font-size: 20px;
+    font-weight: bold;
+    color: #2382e1;
+    text-decoration: none;
+}
+
+nav > a:not(:first-child) {
+    margin-left: 22px;
+}
+
+main {
+    max-width: 800px;
+    margin: 40px auto 0;
+}
+
+.screenshot {
+    text-align: center;
+}
+
+.screenshot img {
+    max-width: 700px;
+}
+
+.features {
+    margin-left: 70px;
+}
+
+.features ul {
+    columns: 2;
+    width: 80%;
+    margin: auto;
+}
+
+.features li:not(:first-child) {
+    margin-top: 10px;
+}

@@ -4,6 +4,7 @@ mkdir -p public
 
 cp *.html *.css *.jpg public
 cp -r resea public
+cp -r nsh public
 
 mkdir -p repos
 #

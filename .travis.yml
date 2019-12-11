@@ -17,6 +17,7 @@ addons:
       - graphviz
 
 script:
+  - cargo install mdbook
   - ./build.sh
 
 deploy:

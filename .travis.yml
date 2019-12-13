@@ -16,7 +16,7 @@ addons:
       - graphviz
 
 script:
-  - npm install -g scss
+  - npm install -g sass
   - gem install asciidoctor
   - cargo install mdbook
   - PATH="$(npm bin -g):/Users/travis/.gem/ruby/2.6.0/bin:$PATH" ./build.sh

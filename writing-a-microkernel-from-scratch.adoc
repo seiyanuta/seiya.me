@@ -43,7 +43,7 @@ Linuxではシステムコールを発行してカーネルに処理をしても
 
 == 色んなマイクロカーネルたち
 === L4
-L4は「性能を考えた設計をすれば，マイクロカーネルは遅くない」ということを証明したカーネルです。異様に速いです。色んな派生があり，研究だけはなく実世界でもしっかり使われています。中でも有名なのが https://support.apple.com/en-us/HT209632[iPhoneのSecure Enclave]です。
+L4は「性能を考えた設計をすれば，マイクロカーネルは遅くない」ということを証明したカーネルです。異様に速いです。色んな派生があり，研究だけはなく実世界でもしっかり使われています。中でも有名なのは https://support.apple.com/en-us/HT209632[iPhoneのSecure Enclave] です。
 
 === MINIX
 当初は教育目的で作られたマイクロカーネルベースのOSです。 https://en.wikipedia.org/wiki/Operating_Systems:_Design_and_Implementation[Operating Systems: Design and Implementation] というオペレーティングシステムの解説とソースコードが一体になった電話帳みたいな本のために書かれたそうです。
@@ -113,7 +113,7 @@ Reseaはメッセージパッシング以外に何も出来ない美しいシス
 .さくらのクラウドで元気に動いている様子（再掲）
 image::images/resea-on-sakura-cloud.png[screenshot, 700, role=text-center]
 
-ようやく目標の「作ったOSのHTTPサーバをIaaSで動かす」です。今回はさくらのクラウドを使いました。何故かe1000とvirtio-netを選べるという非常に魅力的な機能と，課金体系と設定が分かりやすくポンコツTCP/IP実装が暴走してもクラウド破産しにくいという面から選びました。
+ようやく目標の「作ったOSのHTTPサーバをIaaSで動かす」です。今回はさくらのクラウドを使いました。何故かvirtio-netではなくe1000を選べるという非常に魅力的な機能と，課金体系と設定が分かりやすくポンコツTCP/IP実装が暴走してもクラウド破産しにくいという面から選びました。
 
 KVMのはずなのでそのまま動くだろうと楽観視していましたが，現実は厳しいものでした。飛び交うARPパケットでメモリを使い果たしたり（実装が悪い），何も表示せずカーネルパニックを起こしていたりと，手元の環境では再現しないバグに立ち向かう日々を送る羽目になりました。おかげで勘デバッグ能力が上がりました。
 
@@ -141,7 +141,7 @@ http://resea-web-server.seiya.me/[ここでデモが動いています]。運が
 
 Reseaの結果は上の表の通りになりました。fastpathだとまあまあ早くなるみたいですが，seL4の方が速いですね。ただ， https://fuchsia.dev/fuchsia-src/development/benchmarking/microbenchmarks[どうやらFuchsia（Zircon）には勝っている]ようなので第2世代マイクロカーネルを名乗れる性能はあるのではないでしょうか。（これも具体的なベンチマーク設定が分からないので参考程度ですが）
 
-https://github.com/seiyanuta/resea/blob/423da39e39fc85db4c38f68c67a0c6015ca0700e/kernel/ipc.c#L325-L405[IPC fastpathの実装はここにあります]。すっきりしているのでお気に入りです。 https://github.com/seL4/seL4/blob/master/src/fastpath/fastpath.c[seL4のIPC fastpath] よりシンプルなのにベンチマークに負けているのは納得いかないですが，たぶんReseaの方はキャッシュメモリを上手く使えていないのでしょう。
+https://github.com/seiyanuta/resea/blob/423da39e39fc85db4c38f68c67a0c6015ca0700e/kernel/ipc.c#L325-L405[IPC fastpathの実装はここにあります]。すっきりしているのでお気に入りです。 https://github.com/seL4/seL4/blob/master/src/fastpath/fastpath.c[seL4のIPC fastpath] よりシンプルに実装できているのにベンチマークに負けているのは納得いかないですが，たぶんReseaの方はキャッシュメモリを上手く使えていないのでしょう。
 
 == デバッグに便利だったもの
 === Bochs

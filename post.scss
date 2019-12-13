@@ -55,16 +55,22 @@ h1 {
     margin-bottom: 0;
     padding-top: 30px;
     padding-bottom: 0;
-    padding-left: 70px;
-    padding-right: 70px;
 }
 
 #header, #content {
     background: #fefefe;
     max-width: 700px;
-    width: 80vw;
+    width: 85vw;
     margin-left: auto;
     margin-right: auto;
+
+    padding-left: 70px;
+    padding-right: 70px;
+
+    @media screen and (max-width:640px) {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
 }
 
 #content {
@@ -72,8 +78,6 @@ h1 {
     margin-bottom: 70px;
     padding-top: 0;
     padding-bottom: 50px;
-    padding-left: 70px;
-    padding-right: 70px;
 }
 
 #footer {
@@ -155,8 +159,6 @@ table {
 @media screen and (max-width:640px) {
     h1 {
         font-size: 20px;
-        margin-left: -50px;
-        margin-right: -50px;
     }
 
     h2 {

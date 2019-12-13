@@ -40,6 +40,7 @@ code, .listingblock {
 .listingblock {
     padding: 10px 20px;
     margin: 30px 10px;
+    overflow: scroll;
 }
 
 h1 {
@@ -116,6 +117,10 @@ li {
     margin-bottom: 50px;
 }
 
+img {
+    max-width: 80vw;
+}
+
 table {
     margin: 3em 0;
     border-collapse: collapse;
@@ -145,4 +150,24 @@ table {
 
 .text-center {
     text-align: center;
+}
+
+@media screen and (max-width:640px) {
+    h1 {
+        font-size: 20px;
+        margin-left: -50px;
+        margin-right: -50px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    h3 {
+        font-size: 17px;
+    }
+
+    code {
+        font-size: 14px;
+    }
 }

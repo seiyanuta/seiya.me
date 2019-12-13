@@ -1,4 +1,5 @@
 #!/bin/sh
+set -uex
 rm -rf public
 mkdir -p public
 

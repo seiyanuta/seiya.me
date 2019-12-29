@@ -12,6 +12,7 @@ addons:
   homebrew:
     update: true
     packages:
+      - python3
       - doxygen
       - graphviz
 

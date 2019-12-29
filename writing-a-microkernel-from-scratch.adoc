@@ -3,7 +3,7 @@
 = CとRustで一から作るマイクロカーネルOS
 
 [.text-center]
-https://github.com/seiyanuta[@seiyanuta]
+https://github.com/nuta[@seiyanuta]
 
 マイクロカーネルは浪漫に溢れる非常に作りがいのあるソフトウェアです。この記事は，「マイクロカーネルベースのOSの一から作ってIaaSで動かす」ことを目標に作ったマイクロカーネルベースのOS Resea（りーせあ）の設計と実装について軽くまとめた物です。
 
@@ -13,7 +13,7 @@ https://github.com/seiyanuta[@seiyanuta]
 .さくらのクラウドで元気に動く作ったOS Resea（りーせあ）
 image::images/resea-on-sakura-cloud.png[screenshot, 700, role=text-center]
 
-https://github.com/seiyanuta/resea[ソースコードはGitHubにあります]。カーネルはCで，ユーザランドはすべてRustで書きました。
+https://github.com/nuta/resea[ソースコードはGitHubにあります]。カーネルはCで，ユーザランドはすべてRustで書きました。
 興味のある方はぜひ https://seiya.me/resea/docs/getting_started.html[Getting Started] を参考に動かしてみてください。
 
 == マイクロカーネルとは
@@ -141,7 +141,7 @@ KVMのはずなのでそのまま動くだろうと楽観視していました�
 
 Reseaの結果は上の表の通りになりました。fastpathだとまあまあ早くなるみたいですが，seL4の方が速いですね。ただ， https://fuchsia.dev/fuchsia-src/development/benchmarking/microbenchmarks[どうやらFuchsia（Zircon）には勝っている]ようなので第2世代マイクロカーネルを名乗れる性能はあるのではないでしょうか。（これも具体的なベンチマーク設定が分からないので参考程度ですが）
 
-https://github.com/seiyanuta/resea/blob/423da39e39fc85db4c38f68c67a0c6015ca0700e/kernel/ipc.c#L325-L405[IPC fastpathの実装はここにあります]。すっきりしているのでお気に入りです。 https://github.com/seL4/seL4/blob/master/src/fastpath/fastpath.c[seL4のIPC fastpath] よりシンプルに実装できているのにベンチマークに負けているのは納得いかないですが，たぶんReseaの方はキャッシュメモリを上手く使えていないのでしょう。
+https://github.com/nuta/resea/blob/423da39e39fc85db4c38f68c67a0c6015ca0700e/kernel/ipc.c#L325-L405[IPC fastpathの実装はここにあります]。すっきりしているのでお気に入りです。 https://github.com/seL4/seL4/blob/master/src/fastpath/fastpath.c[seL4のIPC fastpath] よりシンプルに実装できているのにベンチマークに負けているのは納得いかないですが，たぶんReseaの方はキャッシュメモリを上手く使えていないのでしょう。
 
 == デバッグに便利だったもの
 === Bochs

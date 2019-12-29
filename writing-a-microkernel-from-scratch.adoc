@@ -3,7 +3,7 @@
 = CとRustで一から作るマイクロカーネルOS
 
 [.text-center]
-https://github.com/nuta[@seiyanuta]
+https://github.com/nuta[@nuta]
 
 マイクロカーネルは浪漫に溢れる非常に作りがいのあるソフトウェアです。この記事は，「マイクロカーネルベースのOSの一から作ってIaaSで動かす」ことを目標に作ったマイクロカーネルベースのOS Resea（りーせあ）の設計と実装について軽くまとめた物です。
 

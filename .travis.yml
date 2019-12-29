@@ -12,11 +12,12 @@ addons:
   homebrew:
     update: true
     packages:
-      - python3
+      - python
       - doxygen
       - graphviz
 
 script:
+  - brew link --overwrite python
   - npm install -g sass
   - gem install asciidoctor
   - cargo install mdbook

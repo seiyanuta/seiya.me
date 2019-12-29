@@ -9,7 +9,7 @@ notifications:
 script:
   - npm install -g sass
   - gem install asciidoctor
-  - PATH="$(npm bin -g):/Users/travis/.gem/ruby/2.6.0/bin:$PATH" ./build.sh
+  - PATH="$(npm bin -g):/Users/travis/.gem/ruby/2.6.0/bin:$PATH" make -j2
 
 deploy:
   provider: netlify

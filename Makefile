@@ -1,4 +1,5 @@
 OUT_DIR ?= public
+MDBOOKS := resea/docs
 STATIC_FILES := \
 	$(wildcard *.html) $(wildcard *.jpg) \
 	$(wildcard images/*) $(wildcard resea/*) $(wildcard nsh/*)
@@ -14,7 +15,8 @@ post_htmls := $(patsubst %.adoc, %.html, $(wildcard *.adoc))
 project_files := $(foreach proj, $(PROJECTS), $(wildcard $(proj)/*))
 
 all: $(OUT_DIR)/project.css $(OUT_DIR)/post.css \
-	$(addprefix $(OUT_DIR)/, $(post_htmls) $(STATIC_FILES))
+	$(addprefix $(OUT_DIR)/, $(post_htmls) $(STATIC_FILES)) \
+	$(OUT_DIR)/resea/docs
 
 .PHONY: clean
 clean:
@@ -43,3 +45,14 @@ $(OUT_DIR)/%: %
 	$(PROGRESS) "COPY" $<
 	mkdir -p $(@D)
 	cp $< $@
+
+tmp/resea:
+	$(PROGRESS) "CLONE" seiyanuta/resea
+	mkdir -p $(@D)
+	git clone https://github.com/seiyanuta/resea tmp/resea
+
+$(OUT_DIR)/resea/docs: tmp/resea
+	$(PROGRESS) "MAKE" resea/docs
+	cd tmp/resea && make docs
+	rm -rf $@
+	cp -r tmp/resea/build/docs $@

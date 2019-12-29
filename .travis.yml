@@ -1,14 +1,26 @@
 os: osx
 osx_image: xcode11.2
 
-language: nodejs
+language: rust
+rust: nightly
+cache: cargo
 
 notifications:
   email: false
 
+addons:
+  homebrew:
+    update: true
+    packages:
+      - python
+      - doxygen
+      - graphviz
+
 script:
+  - brew link --overwrite link
   - npm install -g sass
   - gem install asciidoctor
+  - cargo install mdbook
   - PATH="$(npm bin -g):/Users/travis/.gem/ruby/2.6.0/bin:$PATH" make -j2
 
 deploy:

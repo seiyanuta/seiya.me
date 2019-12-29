@@ -25,20 +25,3 @@ for adoc in *.adoc; do
         </script></head>#" "public/${adoc%.*}.html"
     rm "public/${adoc%.*}.html.bak"
 done
-
-if [[ "$POSTS_ONLY" != "" ]]; then
-  exit 0
-fi
-
-mkdir -p repos
-#
-#  resea
-#
-if [[ ! -d repos/resea ]]; then
-    git clone https://github.com/seiyanuta/resea repos/resea
-fi
-pushd repos/resea
-git pull
-pip3 install -r tools/requirements.txt
-make docs
-cp -r build/docs ../../public/resea/docs

@@ -50,6 +50,7 @@ tmp/resea:
 	$(PROGRESS) "CLONE" seiyanuta/resea
 	mkdir -p $(@D)
 	git clone https://github.com/seiyanuta/resea tmp/resea
+	pip3 install -r tmp/resea/tools/requirements.txt
 
 $(OUT_DIR)/resea/docs: tmp/resea
 	$(PROGRESS) "MAKE" resea/docs

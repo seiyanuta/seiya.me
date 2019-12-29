@@ -47,7 +47,7 @@ $(OUT_DIR)/%: %
 	cp $< $@
 
 tmp/resea:
-	$(PROGRESS) "CLONE" seiyanuta/resea
+	$(PROGRESS) "CLONE" nuta/resea
 	mkdir -p $(@D)
 	git clone https://github.com/nuta/resea tmp/resea
 	pip3 install -r tmp/resea/tools/requirements.txt

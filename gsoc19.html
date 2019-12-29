@@ -12,8 +12,53 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width,initial-scale=1">
         <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400,600" rel="stylesheet">
-        <link href="common.css" rel="stylesheet">
-        
+        <style>
+            body {
+                font-size: 18px;
+                font-family: "Crimson Pro", serif;
+                line-height: 1.3em;
+            }
+
+            main {
+                max-width: 700px;
+                margin: 50px auto 0;
+            }
+
+            section > h1 {
+                font-size: 20px;
+                margin-top: 30px;
+                margin-bottom: 10px;
+            }
+
+            section > p:nth-of-type(1) {
+                margin-top: 0;
+            }
+
+            section ul {
+                margin: 0;
+            }
+
+            section ul li:not(:first-child) {
+                margin-top: 10px;
+            }
+
+            section ul > li > h2 {
+                font-size: 18px;
+                display: inline;
+            }
+
+            section ul > li > p:before {
+                content: " - ";
+            }
+
+            section ul > li > p {
+                display: inline;
+            }
+
+            .center {
+                text-align: center;
+            }
+        </style>        
         <title>Improve LLVM binary utilities - GSoC'19</title>
     </head>
     <body>

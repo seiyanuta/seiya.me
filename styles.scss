@@ -128,8 +128,12 @@ footer {
 }
 
 h1 {
-    font-size: 1.5rem;
     margin-bottom: 0.2rem;
+
+    font-size: 1.5rem;
+    @media only screen and (max-width: 700px) {
+        font-size: 1rem;
+    }
 }
 
 .tags {
@@ -167,7 +171,12 @@ h1 {
 h2 {
     margin-top: 2.5rem;
     margin-bottom: -1rem;
+
     font-size: 1.8rem;
+    @media only screen and (max-width: 700px) {
+        font-size: 1.2rem;
+    }
+
     &:before {
         content: "## ";
         @include header-mark;
@@ -177,7 +186,12 @@ h2 {
 h3 {
     margin-top: 2rem;
     margin-bottom: -1rem;
+
     font-size: 1.5rem;
+    @media only screen and (max-width: 700px) {
+        font-size: 1rem;
+    }
+
     &:before {
         content: "### ";
         @include header-mark;

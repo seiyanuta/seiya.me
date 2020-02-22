@@ -22,8 +22,11 @@
               gtag('config', 'UA-145819933-1');
             </script>
         {% endif %}
+        {% if lang == "en" %}
+        <link href="https://fonts.googleapis.com/css?family=Crimson+Pro:400,600" rel="stylesheet">
+        {% endif %}
     </head>
-    <body>
+    <body lang="{{ lang }}">
         <div class="content">
             <nav>
                 <div class="container">

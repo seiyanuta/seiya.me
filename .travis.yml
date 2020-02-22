@@ -7,11 +7,8 @@ cache: yarn
 notifications:
   email: false
 
-before_script:
-  - yarn
-
-script:
-  - make build
+install: yarn
+script: make build
 
 deploy:
   provider: netlify

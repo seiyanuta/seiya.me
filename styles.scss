@@ -13,9 +13,20 @@
         "SFMono-Regular", "Source Code Pro", Menlo,
         monospace;
     --font-default:
+        "Crimson Pro",
+        "Hiragino Kaku Gothic ProN",
+        serif;
+    --letter-spacing: 0em;
+    --line-height: 1.5;
+}
+
+body:lang(ja) {
+    --font-default:
         "Hiragino Kaku Gothic ProN",
         "Yu Gothic Medium",
         sans-serif;
+    --letter-spacing: 0.06em;
+    --line-height: 2em;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -40,13 +51,13 @@
 html, body {
     height: 100%;
 }
-  
+
 body {
     margin: 0;
     background: var(--color-bg);
     color: var(--color-text);
-    letter-spacing: 0.06em;
-    line-height: 2em;
+    letter-spacing: var(--letter-spacing);
+    line-height: var(--line-height);
     font-feature-settings: "palt" 1;
     font-family: var(--font-default);
     word-break: break-word;
@@ -57,10 +68,15 @@ body {
 }
 
 @media only screen and (max-width: 700px) {
+    html {
+        --default-font-size: 17px;
+        &:lang(ja) {
+            --default-font-size: 15px;
+        }
+    }
+
     main {
-        margin: 30px auto;        
         width: 87vw;
-        font-size: 15px;
     }
     
     nav .container {
@@ -69,9 +85,15 @@ body {
 }
     
 @media only screen and (min-width: 700px) {
+    html {
+        --default-font-size: 20px;
+        &:lang(ja) {
+            --default-font-size: 17px;
+        }
+    }
+
     main {
         max-width: 700px;
-        font-size: 17px;
     }
     
     nav .container {
@@ -84,7 +106,8 @@ body {
 }
   
 main {
-    margin: 3rem auto;        
+    margin: 2rem auto;        
+    font-size: var(--default-font-size);
 }
 
 .posts {
@@ -192,7 +215,7 @@ h1 {
 h2 {
     margin-bottom: -1rem;
     
-    margin-top: 4rem;
+    margin-top: 3rem;
     font-size: 1.8rem;
     @media only screen and (max-width: 700px) {
         margin-top: 2rem;
@@ -230,7 +253,7 @@ h4 {
 
 p {
     &:not(:first-of-type) {
-        margin-top: 2em;
+        margin-top: 1.5em;
     }
 }
 

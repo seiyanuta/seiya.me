@@ -1,27 +1,17 @@
-os: osx
-osx_image: xcode11.2
-
-language: rust
-rust: nightly
-cache: cargo
+os: linux
+dist: xenial
+language: node_js
+node_js: node
+cache: yarn
 
 notifications:
   email: false
 
-addons:
-  homebrew:
-    update: true
-    packages:
-      - python
-      - doxygen
-      - graphviz
+before_script:
+  - yarn
 
 script:
-  - brew link --overwrite python
-  - npm install -g sass
-  - gem install asciidoctor
-  - cargo install mdbook
-  - PATH="$(npm bin -g):/Users/travis/.gem/ruby/2.6.0/bin:$PATH" make -j2
+  - make build
 
 deploy:
   provider: netlify

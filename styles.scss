@@ -18,6 +18,8 @@
         serif;
     --letter-spacing: 0em;
     --line-height: 1.5;
+    --h2-margin-top: 3rem;
+    --h2-margin-bottom: -1rem;
 }
 
 body:lang(ja) {
@@ -27,6 +29,8 @@ body:lang(ja) {
         sans-serif;
     --letter-spacing: 0.06em;
     --line-height: 2em;
+    --h2-margin-top: 4rem;
+    --h2-margin-bottom: 0rem;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -209,13 +213,13 @@ h1 {
     color: var(--color-header-mark);
     font-size: 80%;
     letter-spacing: -0.05em;
-    margin-right: 0.4em;
+    margin-right: 0.3em;
+    vertical-align: 4%;
 }
 
 h2 {
-    margin-bottom: -1rem;
-    
-    margin-top: 3rem;
+    margin-top: var(--h2-margin-top);
+    margin-bottom: var(--h2-margin-bottom);
     font-size: 1.8rem;
     @media only screen and (max-width: 700px) {
         margin-top: 2rem;
@@ -229,7 +233,7 @@ h2 {
 }
 
 h3 {
-    margin-top: 2rem;
+    margin-top: 2.5rem;
     margin-bottom: -1rem;
 
     font-size: 1.5rem;
@@ -252,9 +256,7 @@ h4 {
 }
 
 p {
-    &:not(:first-of-type) {
-        margin-top: 1.5em;
-    }
+    margin-top: 1.5em;
 }
 
 pre {

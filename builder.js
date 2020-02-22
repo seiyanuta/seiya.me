@@ -11,11 +11,6 @@ const express = require("express");
 const websocket = require("express-ws");
 const frontmatter = require("front-matter");
 
-const STATIC_FILES = [
-    "index.html",
-    "me.jpg",
-]
-
 const TRANSLATIONS = {
     en: {
         date_posted: "date",
@@ -114,8 +109,9 @@ function build() {
             path.join("public", path.basename(file)));
     }
 
-    for (const file of STATIC_FILES) {
-        fs.copyFileSync(file, path.join("public", path.basename(file)));
+    for (const file of fs.readdirSync("static")) {
+        fs.copyFileSync(path.join("static", file),
+            path.join("public", path.basename(file)));
     }
 
     const renderer = new nunjucks.Environment();

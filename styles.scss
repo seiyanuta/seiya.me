@@ -20,7 +20,16 @@
 
 @media (prefers-color-scheme: dark) {
     :root {
-        // TODO:
+        --color-bg: #2a2a2a;
+        --color-text: #cacaca;
+        --color-link: #0cafaf;
+        --color-code: #dcdcdc;
+        --color-code-bg: #3a3a3a;
+        --color-nav-bg: #383838;
+        --color-tag-: #bababa;
+        --color-header-mark: #cacaca;
+        --color-tag-bg: #5a5a5a;
+        --color-tag-type-bg: #4a4a4a;
     }
 }  
 

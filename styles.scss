@@ -5,10 +5,10 @@
     --color-code: #555;
     --color-code-bg: #f5f5f5;
     --color-nav-bg: #f6f6f6;
-    --color-tag-: #bababa;
     --color-header-mark: #bababa;
     --color-tag-bg: #f0f0f0;
     --color-tag-type-bg: #dedede;
+    --color-table: #e0e0e0;
     --font-code:
         "SFMono-Regular", "Source Code Pro", Menlo,
         monospace;
@@ -26,10 +26,10 @@
         --color-code: #dcdcdc;
         --color-code-bg: #3a3a3a;
         --color-nav-bg: #383838;
-        --color-tag-: #bababa;
         --color-header-mark: #cacaca;
         --color-tag-bg: #5a5a5a;
         --color-tag-type-bg: #4a4a4a;
+        --color-table: #5a5a5a;
     }
 }  
 
@@ -265,6 +265,28 @@ main a {
     &:hover {
         border-bottom: 1px solid;
     }
+}
+
+table, tr, td {
+    font-size: 95%;
+    border: 1px solid var(--color-table);
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+    margin: 2rem 0;
+}
+
+thead {
+    background: var(--color-table);
+    th {
+        padding: 0.5rem 0rem;
+    }
+}
+
+td {
+    padding: 0.5rem 1rem;
 }
 
 center {

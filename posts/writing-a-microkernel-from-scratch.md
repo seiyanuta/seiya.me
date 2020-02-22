@@ -86,7 +86,7 @@ Reseaはメッセージパッシングしか出来ない美しいシステムコ
 * `error_t notify(cid_t ch, notification_t notification);`
   - notificationの送信。Unixのシグナルみたいなやつ。ブロックしない。
 
-詳細な設計に興味がある人は， [ドキュメント]https://seiya.me/resea/docs/)を読んでください。
+詳細な設計に興味がある人は， [ドキュメント](https://github.com/nuta/resea/tree/master/docs)を読んでください。
 
 ## 実装（カーネル）
 「Rustで書かれたカーネル」という謳い文句にはとても惹かれるものがあります。当初はカーネルをRustで書いていましたが途中で辞めました。というのも，Rustはマイクロカーネルを書くのには向いていない気がするのです。

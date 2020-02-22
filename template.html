@@ -24,44 +24,46 @@
         {% endif %}
     </head>
     <body>
-        <nav>
-            <div class="container">
-                <div>
-                    <a href="/">seiya.me</a>
+        <div class="content">
+            <nav>
+                <div class="container">
+                    <div>
+                        <a href="/">seiya.me</a>
+                    </div>
+                    <div>
+                        {% if not posts %}
+                        <a href="/posts" class=posts-link>
+                            <span class="icon">≡</span>
+                            {{ "posts" | l10n }}
+                        </a>
+                        {% endif %}
+                    </div>        
                 </div>
-                <div>
-                    {% if not posts %}
-                    <a href="/posts" class=posts-link>
-                        <span class="icon">≡</span>
-                        {{ "posts" | l10n }}
-                    </a>
-                    {% endif %}
-                </div>        
-            </div>
-        </nav>
+            </nav>
 
-        <main>
-            {% if posts %}
-                <h1>Posts</h1>
-                <ul class="posts">
-                {% for post in posts %}
-                    <li>
-                        <time datetime="{{ post.dateString }}">{{ post.dateString }}</time>
-                        <a href="{{ post.filename }}">{{ post.title }}</a>
-                {% endfor %}
-                </ul>
-            {% else %}
-                <h1>{{ title }}</h1>
-                <p class="tags">
-                    <span class="tag">
-                        <span class="type">{{ "date_posted" | l10n }}</span>
-                        <span class="body">{{ date }}</span>
-                    </span>
+            <main>
+                {% if posts %}
+                    <h1>Posts</h1>
+                    <ul class="posts">
+                    {% for post in posts %}
+                        <li>
+                            <time datetime="{{ post.dateString }}">{{ post.dateString }}</time>
+                            <a href="{{ post.filename }}">{{ post.title }}</a>
+                    {% endfor %}
+                    </ul>
+                {% else %}
+                    <h1>{{ title }}</h1>
+                    <p class="tags">
+                        <span class="tag">
+                            <span class="type">{{ "date_posted" | l10n }}</span>
+                            <span class="body">{{ date }}</span>
+                        </span>
 
-                </p>
-                {{ body | safe }}
-            {% endif %}
-        </main>
+                    </p>
+                    {{ body | safe }}
+                {% endif %}
+            </main>
+        </div>
 
         {% if not posts %}
             <footer>

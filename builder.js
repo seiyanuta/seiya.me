@@ -83,8 +83,8 @@ function build() {
         fs.writeFileSync(dst, renderedHtml);
 
         const date = new Date(ctx.date);
-        const month = `${date.getMonth()}`.padStart(2, '0');
-        const day = `${date.getDay()}`.padStart(2, '0');
+        const month = `${date.getMonth() + 1}`.padStart(2, '0');
+        const day = `${date.getDay() + 1}`.padStart(2, '0');
         posts.push({
                 title: ctx.title,
                 date,
@@ -126,7 +126,7 @@ function build() {
 function serve(port) {
     const server = express();
     websocket(server);
-    server.use(express.static("public"));
+    server.use(express.static("public", { extensions: ["html"] }));
 
     var wsClient;
     server.ws("/autoreload", (ws) => {

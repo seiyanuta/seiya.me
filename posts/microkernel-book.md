@@ -14,7 +14,7 @@ date: March 1, 2020
 [電子版はこちらからダウンロードできます（無料）](microkernel-book.pdf)
 
 ## 書籍版の入手
-[書籍版はBOOTHで頒布してます](https://booth.pm/ja/items/1847819)
+[書籍版はBOOTHで頒布してます（3月上旬入荷予定）](https://booth.pm/ja/items/1847819)
 
 ## Reseaのソースコード
 [GitHubで公開しています](https://github.com/nuta/resea)

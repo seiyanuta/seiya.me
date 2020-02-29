@@ -53,6 +53,35 @@ function error(msg) {
 
 var debugMode = false;
 
+function compilePost(templateHtml, file, draft) {
+    const md =  frontmatter(fs.readFileSync(file, { encoding: "utf-8" }));
+    const bodyHtml = marked(md.body);
+    const ctx = Object.assign(md.attributes, {
+        debugMode,
+        body: bodyHtml,
+    });
+    const renderer = new nunjucks.Environment();
+    renderer.addFilter("l10n", (tag) => {
+        return TRANSLATIONS[ctx.lang ? ctx.lang : "en"][tag];
+    })
+    const renderedHtml = renderer.renderString(templateHtml, ctx);
+    const dst = path.join("public", path.basename(file).replace(".md", ".html"));
+    fs.writeFileSync(dst, renderedHtml);
+
+    const date = new Date(ctx.date);
+    const month = `${date.getMonth() + 1}`.padStart(2, '0');
+    const day = `${date.getDay() + 1}`.padStart(2, '0');
+
+    return {
+        title: ctx.title,
+        date,
+        draft,
+        dateString:
+            `${date.getFullYear()}-${month}-${day}`,
+        filename: path.basename(file).replace(".md", ""),
+    }
+}
+
 function build() {
     info("Building...");
 
@@ -62,36 +91,14 @@ function build() {
    
     const templateHtml = fs.readFileSync("template.html", { encoding: "utf-8" });
     let posts = [];
-    for (let file of fs.readdirSync("posts")) {
-        file = path.join("posts", file);
-        if (!file.endsWith(".md")) {
-            continue;
+        for (let dir of debugMode ? ["posts", "drafts"] : ["posts"]) {
+        for (let file of fs.readdirSync(dir)) {
+            file = path.join(dir, file);
+            if (!file.endsWith(".md")) {
+                continue;
+            }
+            posts.push(compilePost(templateHtml, file, dir == "drafts"));
         }
-
-        const md = frontmatter(fs.readFileSync(file, { encoding: "utf-8" }));
-        const bodyHtml = marked(md.body);
-        const ctx = Object.assign(md.attributes, {
-            debugMode,
-            body: bodyHtml,
-        });
-        const renderer = new nunjucks.Environment();
-        renderer.addFilter("l10n", (tag) => {
-            return TRANSLATIONS[ctx.lang ? ctx.lang : "en"][tag];
-        })
-        const renderedHtml = renderer.renderString(templateHtml, ctx);
-        const dst = path.join("public", path.basename(file).replace(".md", ".html"));
-        fs.writeFileSync(dst, renderedHtml);
-
-        const date = new Date(ctx.date);
-        const month = `${date.getMonth() + 1}`.padStart(2, '0');
-        const day = `${date.getDay() + 1}`.padStart(2, '0');
-        posts.push({
-                title: ctx.title,
-                date,
-                dateString:
-                    `${date.getFullYear()}-${month}-${day}`,
-                filename: path.basename(file).replace(".md", ""),
-        });
     }
 
     let css;

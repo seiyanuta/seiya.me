@@ -52,6 +52,9 @@
                         <li>
                             <time datetime="{{ post.dateString }}">{{ post.dateString }}</time>
                             <a href="{{ post.filename }}">{{ post.title }}</a>
+                            {% if post.draft %}
+                            <span>(draft)</span>
+                            {% endif %}
                     {% endfor %}
                     </ul>
                 {% else %}

@@ -9,6 +9,11 @@ cache:
 notifications:
   email: false
 
+addons:
+apt:
+  packages:
+    - cargo
+
 install:
   - yarn
   - cargo install mdbook

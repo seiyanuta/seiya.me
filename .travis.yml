@@ -16,7 +16,7 @@ addons:
 
 install:
   - yarn
-  - cargo install mdbook
+  - '"PATH=/home/travis/.cargo/bin:$PATH" cargo install mdbook'
 script: make build
 
 deploy:

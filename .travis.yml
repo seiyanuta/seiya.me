@@ -18,7 +18,7 @@ install:
   - yarn
   - cargo install mdbook
 script:
-  - '"PATH=/home/travis/.cargo/bin:$PATH" make build'
+  - 'PATH="/home/travis/.cargo/bin:$PATH" make build'
 
 deploy:
   provider: netlify

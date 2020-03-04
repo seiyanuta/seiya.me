@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+const fs = require("fs-extra");
+const path = require("path");
+const { execFileSync } = require("child_process");
+
+const REPOS = [
+    "nsh",
+]
+
+if (!fs.existsSync("build")) {
+    fs.mkdirSync("build");
+}
+
+for (const repo of REPOS) {
+    if (!fs.existsSync(`build/${repo}`)) {
+        execFileSync("git", ["clone", `https://github.com/nuta/${repo}`], {
+            stdio: "inherit",
+            cwd: path.resolve("build"),
+        });
+    }
+
+    execFileSync("mdbook", ["build"], {
+        stdio: "inherit",
+        cwd: path.resolve(`build/${repo}`),
+    });
+
+    fs.copySync(`build/${repo}/book`, `public/${repo}`);
+}

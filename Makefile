@@ -4,6 +4,7 @@ watch:
 	./mdsite -s
 build:
 	./mdsite
+	./mdbook
 optimize:
 	optipng images/*.png
 	find images -name "*.jpg" -type f -exec \

@@ -2,12 +2,16 @@ os: linux
 dist: xenial
 language: node_js
 node_js: node
-cache: yarn
+cache:
+  - yarn
+  - cargo
 
 notifications:
   email: false
 
-install: yarn
+install:
+  - yarn
+  - cargo install mdbook
 script: make build
 
 deploy:

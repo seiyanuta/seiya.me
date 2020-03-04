@@ -10,9 +10,9 @@ notifications:
   email: false
 
 addons:
-apt:
-  packages:
-    - cargo
+  apt:
+    packages:
+      - cargo
 
 install:
   - yarn

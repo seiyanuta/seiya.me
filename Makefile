@@ -1,9 +1,9 @@
 .PHONY: default watch build optimize
 default: watch
 watch:
-	./builder.js -s
+	./mdsite -s
 build:
-	./builder.js
+	./mdsite
 optimize:
 	optipng images/*.png
 	find images -name "*.jpg" -type f -exec \

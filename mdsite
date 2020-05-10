@@ -93,11 +93,12 @@ function build() {
     let posts = [];
         for (let dir of debugMode ? ["posts", "drafts"] : ["posts"]) {
         for (let file of fs.readdirSync(dir)) {
-            file = path.join(dir, file);
-            if (!file.endsWith(".md")) {
+            if (file.startsWith("_") || !file.endsWith(".md")) {
                 continue;
             }
-            posts.push(compilePost(templateHtml, file, dir == "drafts"));
+
+            posts.push(compilePost(templateHtml, path.join(dir, file),
+                                   dir == "drafts"));
         }
     }
 

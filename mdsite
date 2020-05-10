@@ -117,6 +117,11 @@ function build() {
             path.join("public", path.basename(file)));
     }
 
+    for (const file of fs.readdirSync("slides")) {
+        fs.copyFileSync(path.join("slides", file),
+            path.join("public", path.basename(file)));
+    }
+
     for (const file of fs.readdirSync("static")) {
         fs.copyFileSync(path.join("static", file),
             path.join("public", path.basename(file)));

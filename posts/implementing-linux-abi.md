@@ -4,7 +4,7 @@ lang: ja
 date: May 10, 2020
 ---
 
-せっかくのゴールデンウィークなので，自作OSカーネルの[Resea](https://github.com/nuta/resea)にLinux ABIを実装して **Linuxバイナリを無修正で動作させる** ことにした。具体的にはBusyBoxのシェルから `uname(1)` を実行できるところまでが目標。
+せっかくのゴールデンウィークなので，自作OSカーネルの[Resea](https://github.com/nuta/resea)にLinux ABIを実装して**Linuxバイナリを無修正で動作させる**ことにした。具体的にはBusyBoxのシェルから`uname(1)`を実行できるところまでが目標。
 
 ![demo](linux-abi-demo.png)
 
@@ -19,7 +19,7 @@ date: May 10, 2020
 - [NetBSD](https://www.netbsd.org/docs/guide/en/chap-linux.html)
   - LibreOfficeのLinuxビルドを動かす例が載っている。すごい。
 - [OSv](https://github.com/cloudius-systems/osv/wiki/OSv-Linux-ABI-Compatibility)
-  - Linuxバイナリをそのまま動かせるユニカーネル。ただし，シングルプロセスのみ対応しているので`fork(2)`等は未対応。スレッドはあるので問題ないはず。
+  - Linuxバイナリをそのまま動かせるユニカーネル。ただし，シングルプロセスのみ対応しているので`fork(2)`等は未対応。と言ってもスレッドはあるので問題ないはず。
 - [Noah](https://dl.acm.org/doi/10.1145/3381052.3381327)
   - LinuxバイナリをmacOSから動かすソフトウェア。ハイパーバイザの仕組みを使っているがLinuxカーネルが動いているわけではない面白い実装。
 - [Geoffrey Lee and Charles Gray. L4/Darwin: Evolving UNIX.](https://ts.data61.csiro.au/publications/papers/Lee_Gray_06.pdf)
@@ -80,15 +80,15 @@ set_tid_address（未実装: とりあえず0を返す）
 ```
 
 ## 知見
-- Linuxで動かす時と自作OS上で動かす時で挙動が違う（特に異なるシステムコールが呼ばれ場合）と，何かが間違っている可能性が高い。`.bss`セクションのゼロクリアし忘れとか。
+- Linuxで動かす時と自作OS上で動かす時で挙動が違う（特に異なるシステムコールが呼ばれる場合）と，自作OSのバグの可能性が高い。`.bss`セクションのゼロクリアし忘れとか。
 - [System V ABI](https://uclibc.org/docs/psABI-x86_64.pdf)の付録（*Appendix A: Linux Conventions*）にLinuxにおけるシステムコール周りの仕様が載っている。
-  - Linuxでは，`-4095 <= x <= -1`を満たすシステムコールの戻り値`x`は**常に**エラーを示すらしい。つまり，その正常終了した時にその範囲の値を返すことはない。この性質はちょっと便利。
+  - Linuxでは，`-4095 <= x <= -1`を満たすシステムコールの戻り値`x`は**常にエラーを示す**らしい。つまり，その正常終了した時にその範囲の値を返すことはない。この性質はちょっと便利。
 - glibcではなくmuslをlibcとして使うと，動作しない時の原因究明がしやすく，スタティックリンクしてもバイナリサイズが小さいのでおすすめ。
 
 ## 今後の課題
 ソケットや`proc`ファイルシステム，ダイナミックリンク，スレッド対応などなど盛りだくさんの未実装機能が残っているので暇な時間を見つけて実装していきたい。
 
-それと，Linux環境を提供するのは一つのユーザプロセス（OSサーバ）なので，単にこれを複数動かすことでコンテナみたいなことも結構簡単に実現できそう。
+Linux環境を提供するのは一つのユーザプロセス（OSサーバ）なので，単にこれを複数動かすことでコンテナみたいなことも結構簡単に実現できそうなので試したい。
 
 ## おまけ: 開発日記
 以下，開発の日記。

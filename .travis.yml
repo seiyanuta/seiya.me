@@ -1,24 +1,21 @@
-os: linux
-dist: xenial
+os: osx
+osx_image: xcode11.4
 language: node_js
 node_js: node
 cache:
   - yarn
-  - cargo
 
 notifications:
   email: false
 
 addons:
-  apt:
+  homebrew:
     packages:
-      - cargo
+      - mdbook
 
-install:
-  - yarn
-  - cargo install mdbook
+install: yarn
 script:
-  - 'PATH="/home/travis/.cargo/bin:$PATH" make build'
+  - make build
 
 deploy:
   provider: netlify

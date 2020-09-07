@@ -1,10 +1,12 @@
 .PHONY: default watch build optimize
 default: watch
+
 watch:
 	./mdsite -s
+
 build:
 	./mdsite
-	./mdbook
+
 optimize:
 	optipng images/*.png
 	find images -name "*.jpg" -type f -exec \

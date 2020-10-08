@@ -6,8 +6,15 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12'
+
+      - run: npm install
+      - run: node mdsite
+
       - name: Deploy to Netlify
-        run: npx netlify-cli deploy --prod -d build/website
+        run: npx netlify-cli deploy --prod -d public
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

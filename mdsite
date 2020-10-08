@@ -55,7 +55,9 @@ var debugMode = false;
 
 function compilePost(templateHtml, file, draft) {
     const md =  frontmatter(fs.readFileSync(file, { encoding: "utf-8" }));
-    const bodyHtml = marked(md.body);
+    let bodyHtml = marked(md.body);
+    bodyHtml = bodyHtml.replace(/<img /g, "<figure><img ");
+    bodyHtml = bodyHtml.replace(/alt="([^"]+)">/g, "alt=\"$1\"><figcaption>$1</figcaption></figure>");
     const ctx = Object.assign(md.attributes, {
         debugMode,
         body: bodyHtml,

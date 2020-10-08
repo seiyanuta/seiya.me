@@ -18,12 +18,12 @@ GCEのドキュメントには [Building custom operating systems](https://cloud
 - virtio-net (legacy device)
 - virtio-scsi (未検証だがたぶんlegacy device)
 
-Reseaでは修正の必要なくf1-microインスタンスで一発で動いてくれたので，エミュレータで動くならGCEでもすんなり動くものなんだろう。
+Reseaは修正の必要なくf1-microインスタンスで一発で動いてくれたので，エミュレータで動くならGCEでもすんなり動くものなんだろう。
 ただし，ネットワーク周りにはいくつか落とし穴がある:
 
 - GCEのvirtio-netデバイスはどうやら Legacy Device（virtioの古い仕様に従うデバイス）らしい。
-  Modern Deviceではないのは意外だが，[Compute Engine Virtual NIC](https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=337d1ccb3dc917c5801f40e71374a63f3e18678b)というものを作っているようなので，性能が欲しい場合はこちらを使うことになるのかも。
-- ブロードキャストパケットは他のVMには流れない。[そもそも許可していない](https://cloud.google.com/vpc/docs/vpc)らしいので，OSがきちんとパケットを送信できているかパケットキャプチャして確認できない。[Packet Mirroring](https://cloud.google.com/vpc/docs/packet-mirroring)を使えばわかるのかも。~
+  Modern Deviceではないのは意外だが，[Compute Engine Virtual NIC](https://git.kernel.org/pub/scm/linux/kernel/git/netdev/net-next.git/commit/?id=337d1ccb3dc917c5801f40e71374a63f3e18678b)というものを作っているようなので，virtioではなく独自路線に進んでいくのだろうか。
+- ブロードキャストパケットは他のVMには流れない。[そもそも許可していない](https://cloud.google.com/vpc/docs/vpc)らしいので，OSがきちんとパケットを送信できているかパケットキャプチャして確認できない。[Packet Mirroring](https://cloud.google.com/vpc/docs/packet-mirroring)を使えばわかるのかも。
 - DHCP DISCOVERのBROADCASTフラグが立っていないとDHCPサーバは返事をしない。
 
 ## デプロイの流れ

@@ -8,6 +8,7 @@
     --color-code-border-dark: #dadada;
     --color-nav-bg: #f6f6f6;
     --color-header-mark: #bababa;
+    --color-hr: #bababa;
     --color-tag-bg: #f0f0f0;
     --color-tag-type-bg: #dedede;
     --color-table: #e0e0e0;
@@ -44,6 +45,7 @@ body:lang(ja) {
         --color-code-bg: #3a3a3a;
         --color-nav-bg: #383838;
         --color-header-mark: #cacaca;
+        --color-hr: #bababa;
         --color-tag-bg: #5a5a5a;
         --color-tag-type-bg: #4a4a4a;
         --color-table: #5a5a5a;
@@ -73,7 +75,7 @@ body {
     flex-direction: column;
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 800px) {
     html {
         --default-font-size: 17px;
         &:lang(ja) {
@@ -90,7 +92,7 @@ body {
     }
 }
     
-@media only screen and (min-width: 700px) {
+@media only screen and (min-width: 800px) {
     html {
         --default-font-size: 20px;
         &:lang(ja) {
@@ -99,11 +101,11 @@ body {
     }
 
     main {
-        max-width: 700px;
+        max-width: 800px;
     }
     
     nav .container {
-        max-width: 700px;
+        max-width: 800px;
     }
 }
 
@@ -185,7 +187,7 @@ h1 {
     margin-bottom: 0.2rem;
 
     font-size: 1.5rem;
-    @media only screen and (max-width: 700px) {
+    @media only screen and (max-width: 800px) {
         font-size: 1rem;
     }
 }
@@ -227,7 +229,7 @@ h2 {
     margin-top: var(--h2-margin-top);
     margin-bottom: var(--h2-margin-bottom);
     font-size: 1.8rem;
-    @media only screen and (max-width: 700px) {
+    @media only screen and (max-width: 800px) {
         margin-top: 2rem;
         font-size: 1.2rem;
     }
@@ -243,7 +245,7 @@ h3 {
     margin-bottom: -1rem;
 
     font-size: 1.5rem;
-    @media only screen and (max-width: 700px) {
+    @media only screen and (max-width: 800px) {
         font-size: 1rem;
     }
 
@@ -267,7 +269,7 @@ p {
 
 pre {
     background-color: var(--color-code-bg);
-    line-height: 1.4rem;
+    line-height: 1.3rem;
     padding: 1.2rem;
     overflow: scroll;
     & > code {
@@ -281,11 +283,15 @@ code {
     color: var(--color-code);
     background-color: var(--color-code-bg);
     border: 1px solid var(--color-code-border);
-    font-size: 0.85rem;
+    font-size: 0.95rem;
     font-family: var(--font-code);
     padding: 0.1rem 0.25rem;
     margin: 0 0.3rem;
     border-radius: 3px;
+}
+
+figure {
+    margin: 4em 0;
 }
 
 img {
@@ -297,6 +303,8 @@ img {
 
 figcaption {
     text-align: center;
+    margin-top: 30px;
+    font-weight: bold;
 }
 
 main a {
@@ -340,4 +348,9 @@ li {
     & > ul {
         margin-top: 0.5rem;
     }
+}
+
+hr {
+    border: 2px solid var(--color-hr);
+    margin: 3rem 0;
 }

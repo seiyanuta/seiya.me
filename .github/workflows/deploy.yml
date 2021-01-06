@@ -11,10 +11,10 @@ jobs:
           node-version: '12'
 
       - run: npm install
-      - run: node mdsite
+      - run: make
 
       - name: Deploy to Netlify
-        run: npx netlify-cli deploy --prod -d public
+        run: npx netlify-cli deploy --prod -d dist
         env:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}

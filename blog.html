@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{ title }}</title>
+    <style>{{ css | safe }}</style>
+    <link rel="alternate"  href="/atom.xml" title="seiya.me" type="application/atom+xml">
+    <script src="https://kit.fontawesome.com/28c14cf689.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/solarized-light.min.css" integrity="sha512-pJ4snSRt1JFJy6nAJ+zop0G55rCzd1qtW0CvOvB1XGTopUBHSwIZ2qn3g2ztlPfrCaudkpXVcN2BK+ZdxCJ6pQ==" crossorigin="anonymous" />
+</head>
+<body>
+    <nav>
+        <div>
+            <a href="/blog">seiya.me</a>
+        </div>
+        <div>
+            <a href="/atom.xml" class="link-with-icon"><i class="fas fa-rss"></i>Feed</a>
+        </div>
+    </nav>
+    <main>
+        <h1>{{ title }}</h1>
+        {{ body | safe }}
+    </main>
+    <footer>
+       — written by Seiya Nuta<br>
+       CC BY 4.0
+    </footer>
+</body>
+</html>

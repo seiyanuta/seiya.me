@@ -1,0 +1,186 @@
+$default-font-family: "PT Serif", "Hiragino Kaku Gothic ProN", "Times New Roman", serif;
+$header-font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,sans-serif;
+$caption-font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,sans-serif;
+$code-font-family: "SFMono-Regular", "Source Code Pro", Menlo, monospace;
+$h1-font-size: 36px;
+$small-h1-font-size: 24px;
+$h2-font-size: 24px;
+$h3-font-size: 18px;
+$h4-font-size: 18px;
+$default-font-size: 18px;
+$caption-font-size: 16px;
+
+:root {
+    --text-color: #272727;
+    --bg-color: #fff;
+    --nav-bg-color: #f3f3f3;
+    --link-color: #2c7cbc;
+    --code-color: #555;
+    --code-bg-color: #fafafa;
+    --hr-color: #bababa;
+    --table-color: #e0e0e0;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: #cacaca;
+        --bg-color: #2a2a2a;
+        --nav-bg-color: #4a4a4a;
+        --link-color: #50a3e6;
+        --code-color: #dcdcdc;
+        --code-bg-color: #3a3a3a;
+        --hr-color: #bababa;
+        --table-color: #5a5a5a;
+    }
+}
+
+
+@media only screen and (max-width: 700px) {
+    main, nav {
+        width: 87vw;
+    }
+
+    h1 { font-size: $h1-font-size * 0.6; }
+    h2 { font-size: $h2-font-size * 0.87; }
+    h3 { font-size: $h3-font-size * 0.87; }
+    h4 { font-size: $h4-font-size * 0.87; }
+    body { font-size: $default-font-size * 0.87; }
+}
+    
+@media only screen and (min-width: 700px) {
+    main, nav {
+        max-width: 700px;
+    }
+
+    h1 { font-size: $h1-font-size; }
+    h2 { font-size: $h2-font-size; }
+    h3 { font-size: $h3-font-size; }
+    h4 { font-size: $h4-font-size; }
+    body { font-size: $default-font-size; }
+}
+
+body {
+    background-color: var(--bg-color);
+    font-family: $default-font-family;
+    color: var(--text-color);
+    line-height: 1.75rem;
+}
+
+h1, h2, h3, h4 {
+    font-family: $header-font-family;
+}
+
+h2, h3, h4 {
+    margin-top: 3.5rem;
+}
+
+main {
+    margin: 0 auto;
+}
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &.link-with-icon > i {
+        padding-right: 0.2rem;
+    }
+}
+
+nav {   
+    background-color: var(--nav-bg-color);
+    display: flex;
+    justify-content: space-between;
+    margin: 0 auto;
+    padding: 4px 1rem;
+    font-family: $header-font-family;
+    font-weight: bold;
+
+    a {
+        color: var(--text-color);
+        font-size: $default-font-size * 0.9;
+    }
+}
+
+footer {
+    margin: 3rem 0;
+    line-height: 2rem;
+    text-align: center;
+}
+
+pre {
+    background-color: var(--code-bg-color);
+    line-height: 1.3rem;
+    padding: 1.2rem;
+    overflow: scroll;
+    & > code {
+        padding: 0;
+        margin: 0;
+        border: none;
+    }
+}
+
+code {
+    color: var(--code-color);
+    background-color: var(--code-bg-color);
+    border: 1px solid var(--code-border-color);
+    font-size: 0.95rem;
+    font-family: $code-font-family;
+    padding: 0.1rem 0.25rem;
+    margin: 0 0.3rem;
+    border-radius: 3px;
+}
+
+center {
+    margin-top: 2em;
+}
+
+table, tr, td {
+    font-size: 95%;
+    border-collapse: collapse;
+}
+
+table {
+    width: 100%;
+    margin: 2rem 0;
+}
+
+thead {
+    border-bottom: 2px solid var(--table-color);
+    th {
+        text-align: left;
+        padding: 0.5rem 1rem;
+    }
+}
+
+td {
+    padding: 0.5rem 1rem;
+}
+
+figure {
+    margin: 3.5rem 0;
+
+    img {
+        max-width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    figcaption {
+        margin-top: 2rem;
+        text-align: center;
+        font-family: $caption-font-family;
+        font-weight: bold;
+        font-size: $caption-font-size;
+    }
+}
+
+hr {
+    border: 2px solid var(--hr-color);
+    margin: 3rem 0;
+}

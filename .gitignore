@@ -1,4 +1,4 @@
-/public
+/dist
+/tmp
 /node_modules
-/build
-*.log
+.DS_Store

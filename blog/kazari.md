@@ -1,7 +1,7 @@
 ---
 title: Rust製GUIスタック「Kazari」
 lang: ja
-date: March 1, 2021
+date: March 11, 2021
 ---
 
 グラフィカルユーザインタフェース（GUI）をResea上に実装をした話。

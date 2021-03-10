@@ -20,6 +20,7 @@ all: \
 	dist/blog.html \
 	$(patsubst pub/%,dist/%,$(wildcard pub/*)) \
 	$(patsubst images/%,dist/%,$(wildcard images/*)) \
+	$(patsubst videos/%,dist/%,$(wildcard videos/*)) \
 	$(patsubst blog/%.md,dist/%.html,$(wildcard blog/*.md)) \
 
 .PHONY: clean
@@ -39,6 +40,11 @@ dist/%: pub/%
 	cp $< $@
 
 dist/%.png: images/%.png
+	$(PROGRESS) "CP" $<
+	mkdir -p $(@D)
+	cp $< $@
+
+dist/%.mp4: videos/%.mp4
 	$(PROGRESS) "CP" $<
 	mkdir -p $(@D)
 	cp $< $@

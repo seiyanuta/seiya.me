@@ -5,8 +5,25 @@ const nunjucks = require("nunjucks");
 const marked = require("marked");
 const frontmatter = require("front-matter");
 
+const renderer = new marked.Renderer();
+
+// https://github.com/markedjs/marked/pull/675#issuecomment-408135046
+renderer.oldImage = renderer.image;
+renderer.image = function (href, title, text) {
+    var videos = ['webm', 'mp4', 'mov'];
+    var filetype = href.split('.')[1];
+    if (videos.indexOf(filetype) > -1) {
+      var out = '<video autoplay loop alt="' + text + '" muted>'
+              + '  <source src="' + href + '" type="video/' + filetype + '">'
+              + '</video>'
+      return out;
+    } else {
+      return renderer.oldImage(href, title, text);
+    }
+  };
+  
 marked.setOptions({
-    renderer: new marked.Renderer(),
+    renderer,
     highlight: function(code, lang) {
         lang = hljs.getLanguage(lang) ? lang : 'plaintext';
         return hljs.highlight(lang, code).value;
@@ -26,9 +43,10 @@ function md2html(mdFile, { css, template }) {
     const templateHtml = fs.readFileSync(template, { encoding: "utf-8" });
     let bodyHtml = marked(md.body);
     bodyHtml = bodyHtml.replace(/<img /g, "<figure><img ");
+    bodyHtml = bodyHtml.replace(/<video /g, "<figure><video ");
     bodyHtml = bodyHtml.replace(/alt="([^"]+)">/g, "alt=\"$1\"><figcaption>$1</figcaption></figure>");
-    const renderer = new nunjucks.Environment();
-    return renderer.renderString(templateHtml, {
+    bodyHtml = bodyHtml.replace(/alt="([^"]+)" muted>(.+)<\/video>/g, "alt=\"$1\" muted>$2</video><figcaption>$1</figcaption></figure>");
+    return (new nunjucks.Environment()).renderString(templateHtml, {
         body: bodyHtml,
         css: cssBody,
         ...md.attributes,

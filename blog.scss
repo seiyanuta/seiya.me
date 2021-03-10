@@ -63,7 +63,11 @@ body {
     background-color: var(--bg-color);
     font-family: $default-font-family;
     color: var(--text-color);
-    line-height: 1.75rem;
+    line-height: 1.9rem;
+}
+
+h1 {
+    margin-bottom: 3rem;
 }
 
 h1, h2, h3, h4 {
@@ -164,7 +168,7 @@ td {
 figure {
     margin: 3.5rem 0;
 
-    img {
+    img, video {
         max-width: 100%;
         display: block;
         margin-left: auto;

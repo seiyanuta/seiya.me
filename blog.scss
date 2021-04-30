@@ -1,8 +1,8 @@
 $default-font-family: "PT Serif", "Hiragino Kaku Gothic ProN", "Times New Roman", serif;
 $header-font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,sans-serif;
 $caption-font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,sans-serif;
-$code-font-family: "SFMono-Regular", "Source Code Pro", Menlo, monospace;
-$h1-font-size: 36px;
+$code-font-family: "Menlo", "SFMono-Regular", "Source Code Pro", Menlo, monospace;
+$h1-font-size: 28px;
 $small-h1-font-size: 24px;
 $h2-font-size: 24px;
 $h3-font-size: 18px;
@@ -18,6 +18,7 @@ $caption-font-size: 16px;
     --code-color: #555;
     --code-bg-color: #fafafa;
     --hr-color: #bababa;
+    --blockquote-color: #dadada;
     --table-color: #e0e0e0;
 }
 
@@ -30,6 +31,7 @@ $caption-font-size: 16px;
         --code-color: #dcdcdc;
         --code-bg-color: #3a3a3a;
         --hr-color: #bababa;
+        --blockquote-color: #dadada;
         --table-color: #5a5a5a;
     }
 }
@@ -44,7 +46,7 @@ $caption-font-size: 16px;
     h2 { font-size: $h2-font-size * 0.87; }
     h3 { font-size: $h3-font-size * 0.87; }
     h4 { font-size: $h4-font-size * 0.87; }
-    body { font-size: $default-font-size * 0.87; }
+    body { font-size: $default-font-size * 0.97; }
 }
     
 @media only screen and (min-width: 700px) {
@@ -119,6 +121,7 @@ footer {
 pre {
     background-color: var(--code-bg-color);
     line-height: 1.3rem;
+    font-size: 0.85rem;
     padding: 1.2rem;
     overflow: scroll;
     & > code {
@@ -132,7 +135,7 @@ code {
     color: var(--code-color);
     background-color: var(--code-bg-color);
     border: 1px solid var(--code-border-color);
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     font-family: $code-font-family;
     padding: 0.1rem 0.25rem;
     margin: 0 0.3rem;
@@ -187,4 +190,11 @@ figure {
 hr {
     border: 2px solid var(--hr-color);
     margin: 3rem 0;
+}
+
+blockquote {
+    border-left: 5px solid var(--blockquote-color);
+    padding-left: 20px;
+    margin: 2rem 0;
+    font-style: italic;
 }

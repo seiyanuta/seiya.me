@@ -13,5 +13,8 @@
     "postcss": "^8.2.2",
     "postcss-cli": "^8.3.1",
     "postcss-preset-env": "^6.7.0"
+  },
+  "devDependencies": {
+    "http-server": "^0.12.3"
   }
 }

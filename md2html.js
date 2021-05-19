@@ -13,20 +13,20 @@ renderer.image = function (href, title, text) {
     var videos = ['webm', 'mp4', 'mov'];
     var filetype = href.split('.')[1];
     if (videos.indexOf(filetype) > -1) {
-      var out = '<video autoplay loop alt="' + text + '" muted>'
-              + '  <source src="' + href + '" type="video/' + filetype + '">'
-              + '</video>'
-      return out;
+        var out = '<video autoplay loop alt="' + text + '" muted>'
+            + '  <source src="' + href + '" type="video/' + filetype + '">'
+            + '</video>'
+        return out;
     } else {
-      return renderer.oldImage(href, title, text);
+        return renderer.oldImage(href, title, text);
     }
-  };
-  
+};
+
 marked.setOptions({
     renderer,
-    highlight: function(code, lang) {
+    highlight: function (code, lang) {
         lang = hljs.getLanguage(lang) ? lang : 'plaintext';
-        return hljs.highlight(lang, code).value;
+        return hljs.highlight(code, { language: lang }).value;
     },
     xhtml: false,
     pedantic: false,

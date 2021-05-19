@@ -32,7 +32,7 @@ dev:
 	mkdir -p dist
 	yarn concurrently -n build,server \
 		"nodemon -e 'html js scss md' --ignore 'dist/*' --ignore 'tmp/*' --exec 'make -j8 || exit 1'" \
-		"cd dist; python3 -m http.server --bind localhost 8000"
+		"cd dist; yarn http-server -a localhost -p 8000"
 
 dist/%: pub/%
 	$(PROGRESS) "CP" $<

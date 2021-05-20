@@ -1,4 +1,4 @@
-$default-font-family: "PT Serif", "Hiragino Kaku Gothic ProN", "Times New Roman", serif;
+$default-font-family: -apple-system, BlinkMacSystemFont, Segoe UIm "Hiragino Kaku Gothic ProN", "Yu Gothic", YuGothic, Verdana, Meiryo, sans-serif;
 $header-font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,sans-serif;
 $caption-font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,sans-serif;
 $code-font-family: "Menlo", "SFMono-Regular", "Source Code Pro", Menlo, monospace;
@@ -11,7 +11,7 @@ $default-font-size: 18px;
 $caption-font-size: 16px;
 
 :root {
-    --text-color: #272727;
+    --text-color: #373737;
     --bg-color: #fff;
     --nav-bg-color: #f3f3f3;
     --link-color: #2c7cbc;
@@ -31,7 +31,7 @@ $caption-font-size: 16px;
         --code-color: #dcdcdc;
         --code-bg-color: #3a3a3a;
         --hr-color: #bababa;
-        --blockquote-color: #dadada;
+        --blockquote-color: #afafaf;
         --table-color: #5a5a5a;
     }
 }
@@ -46,7 +46,7 @@ $caption-font-size: 16px;
     h2 { font-size: $h2-font-size * 0.87; }
     h3 { font-size: $h3-font-size * 0.87; }
     h4 { font-size: $h4-font-size * 0.87; }
-    body { font-size: $default-font-size * 0.97; }
+    body { font-size: $default-font-size * 0.87; }
 }
     
 @media only screen and (min-width: 700px) {
@@ -66,6 +66,11 @@ body {
     font-family: $default-font-family;
     color: var(--text-color);
     line-height: 1.9rem;
+    font-weight: 400;
+}
+
+strong {
+    font-weight: 700;
 }
 
 h1 {
